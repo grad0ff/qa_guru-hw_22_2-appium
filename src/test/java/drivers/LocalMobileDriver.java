@@ -17,36 +17,25 @@ import static org.apache.commons.io.FileUtils.copyInputStreamToFile;
 
 public class LocalMobileDriver implements WebDriverProvider {
 
-    public static URL getAppiumServerUrl() {
-        try {
-            return new URL("http://localhost:4723/wd/hub");
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     @Override
     public WebDriver createDriver(Capabilities capabilities) {
-        File app = getApp();
-
         UiAutomator2Options options = new UiAutomator2Options();
         options.merge(capabilities);
         options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
         options.setPlatformName("Android");
-        options.setDeviceName("RFCR90ZMNQP");
-//        options.setDeviceName("Pixel 4 API 30");
-        options.setPlatformVersion("12.0");
-//        options.setPlatformVersion("11.0");
-        options.setApp(app.getAbsolutePath());
+//        options.setDeviceName("RFCR90ZMNQP");
+        options.setDeviceName("Pixel 4 API 30");
+//        options.setPlatformVersion("12.0");
+        options.setPlatformVersion("11.0");
+        options.setApp(getApp().getAbsolutePath());
         options.setAppPackage("org.wikipedia.alpha");
         options.setAppActivity("org.wikipedia.main.MainActivity");
-
         return new AndroidDriver(getAppiumServerUrl(), options);
     }
 
     private File getApp() {
-        String appUrl = "https://github.com/wikimedia/apps-android-wikipedia/" +
-                "releases/download/latest/app-alpha-universal-release.apk";
+        String appUrl = "https://github.com/wikimedia/apps-android-wikipedia/releases/" +
+                "download/latest/app-alpha-universal-release.apk";
         String appPath = "src/test/resources/apps/app-alpha-universal-release.apk";
 
         File app = new File(appPath);
@@ -60,4 +49,11 @@ public class LocalMobileDriver implements WebDriverProvider {
         return app;
     }
 
+    private static URL getAppiumServerUrl() {
+        try {
+            return new URL("http://localhost:4723/wd/hub");
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
