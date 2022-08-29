@@ -28,8 +28,8 @@ public class TestBase {
 
     @AfterEach
     public void afterEach() {
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
+        Attach.addScreenshotAs("Last screenshot");
+        Attach.addPageSource();
         step("Close driver", Selenide::closeWebDriver);
     }
 }

@@ -17,6 +17,14 @@ import static org.apache.commons.io.FileUtils.copyInputStreamToFile;
 
 public class LocalMobileDriver implements WebDriverProvider {
 
+    private static URL getAppiumServerUrl() {
+        try {
+            return new URL("http://localhost:4723/wd/hub");
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public WebDriver createDriver(Capabilities capabilities) {
         UiAutomator2Options options = new UiAutomator2Options();
@@ -47,13 +55,5 @@ public class LocalMobileDriver implements WebDriverProvider {
             }
         }
         return app;
-    }
-
-    private static URL getAppiumServerUrl() {
-        try {
-            return new URL("http://localhost:4723/wd/hub");
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

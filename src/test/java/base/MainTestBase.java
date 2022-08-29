@@ -17,7 +17,7 @@ public class MainTestBase {
                 manager = new LocalMobileWDManager();
                 break;
             case "browserstack":
-//                manager = new BrowserstackMobileWDManager(); // TODO: 29.08.2022
+                manager = new BrowserstackMobileWDManager(); // TODO: 29.08.2022
                 break;
             case "selenoid":
 //                manager = new SelenoidMobileWDManager(); // TODO: 29.08.2022

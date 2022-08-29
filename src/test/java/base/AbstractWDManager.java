@@ -10,19 +10,19 @@ import static io.qameta.allure.Allure.step;
 
 public abstract class AbstractWDManager {
 
-    protected abstract void configureBeforeAll();
+    abstract void configureBeforeAll();
 
-    protected void configureBeforeEach() {
+    void configureBeforeEach() {
         addListener("AllureSelenide", new AllureSelenide());
         open();
     }
 
-    protected void configureAfterEach() {
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
+    void configureAfterEach() {
+        Attach.addScreenshotAs("Last screenshot");
+        Attach.addPageSource();
         step("Close driver", Selenide::closeWebDriver);
     }
 
-    protected void configureAfterAll() {
+    void configureAfterAll() {
     }
 }
