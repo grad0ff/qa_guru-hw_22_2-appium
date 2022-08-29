@@ -2,5 +2,5 @@
 на каждом сделать проверку.
 
 Доработать возможность запуска на разных стендах (передать из командной строки
--DdeviceHost=tests.browserstack / emulation / tests.local / tests.selenoid (tests.selenoid пока в доработке, будет в ближайшую неделю)
+-DdeviceHost=browserstack / emulation / local / selenoid (selenoid пока в доработке, будет в ближайшую неделю)
 Для каждого сделать драйвер и конфиг с owner
