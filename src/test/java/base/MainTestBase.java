@@ -30,11 +30,6 @@ public class MainTestBase {
         manager.configureBeforeAll();
     }
 
-    @AfterAll
-    public static void afterAll() {
-        manager.configureAfterAll();
-    }
-
     @BeforeEach
     public void beforeEach() {
         manager.configureBeforeEach();
@@ -44,4 +39,10 @@ public class MainTestBase {
     public void afterEach() {
         manager.configureAfterEach();
     }
+
+    @AfterAll
+    public static void afterAll() {
+        manager.configureAfterAll();
+    }
+
 }
