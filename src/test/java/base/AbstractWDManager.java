@@ -25,4 +25,6 @@ public abstract class AbstractWDManager {
 
     void configureAfterAll() {
     }
+
+    abstract String getVideoUrl(String sessionId); // TODO: 30.08.2 реализовать отдельно в классах (независимо)
 }

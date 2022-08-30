@@ -10,7 +10,7 @@ public class MainTestBase {
     private static AbstractWDManager manager;
 
     static {
-        String deviceHost = System.getProperty("-DdeviceHost");
+        String deviceHost = System.getProperty("-DdeviceHost", "browserstack"); // TODO: 30.08.2022 undefined
         switch (deviceHost) {
             case "emulator":
             case "real":
@@ -30,6 +30,11 @@ public class MainTestBase {
         manager.configureBeforeAll();
     }
 
+    @AfterAll
+    public static void afterAll() {
+        manager.configureAfterAll();
+    }
+
     @BeforeEach
     public void beforeEach() {
         manager.configureBeforeEach();
@@ -38,10 +43,5 @@ public class MainTestBase {
     @AfterEach
     public void afterEach() {
         manager.configureAfterEach();
-    }
-
-    @AfterAll
-    public static void afterAll() {
-        manager.configureAfterAll();
     }
 }

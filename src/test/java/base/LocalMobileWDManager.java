@@ -10,4 +10,9 @@ public class LocalMobileWDManager extends AbstractWDManager {
         Configuration.browser = LocalMobileDriver.class.getName();
         Configuration.browserSize = null;
     }
+
+    @Override
+    String getVideoUrl(String sessionId) {
+        return null;
+    }
 }
