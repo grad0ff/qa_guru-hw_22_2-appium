@@ -12,6 +12,7 @@ def allureVersion = "2.17.3",
     appiumVersion = "8.0.0",
 //    appiumVersion = "7.6.0",
     ownerVersion = '1.0.12',
+    assertjVersion = '3.23.1',
     restAssuredVersion = "4.5.1",
     commonsIoVersion = "2.11.0",
     junitVersion = "5.8.2",
@@ -32,11 +33,12 @@ allure {
 }
 
 dependencies {
-    testImplementation(
+    testImplementation( // навести порядок в очередности
             "com.codeborne:selenide:$selenideVersion",
             "io.qameta.allure:allure-selenide:$allureVersion",
             "io.appium:java-client:$appiumVersion",
             "org.aeonbits.owner:owner:$ownerVersion",
+            "org.assertj:assertj-core:$assertjVersion",
             "io.rest-assured:rest-assured:$restAssuredVersion",
             "commons-io:commons-io:$commonsIoVersion",
             "org.junit.jupiter:junit-jupiter:$junitVersion",

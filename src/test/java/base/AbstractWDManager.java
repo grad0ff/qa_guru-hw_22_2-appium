@@ -1,6 +1,8 @@
 package base;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import drivers.LocalMobileDriver;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 
@@ -14,7 +16,6 @@ public abstract class AbstractWDManager {
     abstract void configureBeforeAll();
 
     void configureBeforeEach() {
-        closeWebDriver();
         addListener("AllureSelenide", new AllureSelenide());
     }
 
@@ -27,5 +28,5 @@ public abstract class AbstractWDManager {
     void configureAfterAll() {
     }
 
-    abstract String getVideoUrl(String sessionId); // TODO: 30.08.2 реализовать отдельно в классах (независимо)
+    abstract String getVideoUrl(String sessionId); // TODO: 30.08.2 реализовать отдельно (независимо) в классах
 }
