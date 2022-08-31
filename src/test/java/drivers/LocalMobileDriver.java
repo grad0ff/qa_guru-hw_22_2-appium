@@ -44,14 +44,14 @@ public class LocalMobileDriver implements WebDriverProvider {
             options.setPlatformVersion(config.getEmulatorDeviceOs());
         }
         options.setApp(app.getAbsolutePath());
-        options.setAppPackage("org.wikipedia");
+        options.setAppPackage("org.wikipedia.alpha");
         options.setAppActivity("org.wikipedia.main.MainActivity");
         return new AndroidDriver(getAppiumServerUrl(), options);
     }
 
     private File getApp() {
         String appUrl = "https://github.com/wikimedia/apps-android-wikipedia/releases/" +
-                "download/latest/app-alpha-universal-release.apk";
+                "download/latest/aapp-alpha-universal-release.apk";
         String appPath = "src/test/resources/apps/app-alpha-universal-release.apk";
 
         File app = new File(appPath);
@@ -64,5 +64,4 @@ public class LocalMobileDriver implements WebDriverProvider {
         }
         return app;
     }
-
 }

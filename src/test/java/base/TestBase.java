@@ -13,7 +13,7 @@ public class TestBase {
     private static AbstractWDManager manager;
 
     static {
-        String deviceHost = System.getProperty("-DdeviceHost", "browserstack"); // TODO: 30.08.2022 удалить default значение
+        String deviceHost = System.getProperty("-DdeviceHost", "real");
         switch (deviceHost) {
             case "emulator":
                 manager = LocalMobileWDManager.create(false);
@@ -25,7 +25,7 @@ public class TestBase {
                 manager = BrowserstackMobileWDManager.create();
                 break;
             case "selenoid":
-                // TODO: manager = new SelenoidMobileWDManager();
+                // TODO: manager = SelenoidMobileWDManager.create()();
                 break;
             default:
                 throw new RuntimeException();
@@ -51,5 +51,4 @@ public class TestBase {
     public static void afterAll() {
         manager.configureAfterAll();
     }
-
 }

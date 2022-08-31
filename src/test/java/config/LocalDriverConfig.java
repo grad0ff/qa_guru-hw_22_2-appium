@@ -2,14 +2,8 @@ package config;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources("classpath:config/local_driver.properties")
+@Config.Sources("classpath:config/localdriver.properties")
 public interface LocalDriverConfig extends Config {
-
-    @Key("user")
-    String getUser();
-
-    @Key("key")
-    String getKey();
 
     @Key("serverUrl")
     String getServerUrl();

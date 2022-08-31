@@ -28,7 +28,7 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
         mutableCapabilities.merge(capabilities);
         mutableCapabilities.setCapability("browserstack.user", "arturgradov_REgUIA");
         mutableCapabilities.setCapability("browserstack.key", "tqpqpsy7y37DjsZoJiBD");
-        mutableCapabilities.setCapability("app", "bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c");
+        mutableCapabilities.setCapability("app", "bs://80dadac7348ed4d615f5fec70eb4b106e2436489");
         mutableCapabilities.setCapability("device", "Google Pixel 3");
         mutableCapabilities.setCapability("os_version", "9.0");
         mutableCapabilities.setCapability("project", "qa_guru-hw_22_2-mobile");
@@ -36,6 +36,4 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
         mutableCapabilities.setCapability("name", "selenide android test");
         return new RemoteWebDriver(getBrowserstackUrl(), mutableCapabilities);
     }
-
-
 }
