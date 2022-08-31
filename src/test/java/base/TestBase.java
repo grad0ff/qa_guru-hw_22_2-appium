@@ -13,7 +13,7 @@ public class TestBase {
     private static AbstractWDManager manager;
 
     static {
-        String deviceHost = System.getProperty("-DdeviceHost");
+        String deviceHost = System.getProperty("deviceHost");
         switch (deviceHost) {
             case "browserstack":
                 manager = BrowserstackMobileWDManager.create();
