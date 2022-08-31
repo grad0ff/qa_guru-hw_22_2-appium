@@ -13,7 +13,7 @@ public class TestBase {
     private static AbstractWDManager manager;
 
     static {
-        String deviceHost = System.getProperty("-DdeviceHost", "real");
+        String deviceHost = System.getProperty("-DdeviceHost");
         switch (deviceHost) {
             case "emulator":
                 manager = LocalMobileWDManager.create(false);
