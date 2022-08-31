@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class GetStartedPage {
 
     private final SelenideElement forwardButtonElement = $(AppiumBy.id("org.wikipedia.alpha:id/fragment_onboarding_forward_button"));
-    private final SelenideElement languagesLink = $(AppiumBy.id("org.wikipedia.alpha:id/addLangContainer")).lastChild();
+    private final SelenideElement languagesLink = $(AppiumBy.id("org.wikipedia.alpha:id/addLangContainer"));
     public SelenideElement primaryTextElement = $(AppiumBy.id("org.wikipedia.alpha:id/primaryTextView"));
     public SelenideElement languageCode = $(AppiumBy.id("org.wikipedia.alpha:id/wiki_language_code"));
     public SelenideElement toggle = $(AppiumBy.id("org.wikipedia.alpha:id/switchView"));
