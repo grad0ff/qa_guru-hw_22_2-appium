@@ -1,6 +1,7 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
+import config.BrowserstackConfig;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
@@ -11,9 +12,11 @@ import java.net.URL;
 
 public class BrowserstackMobileDriver implements WebDriverProvider {
 
+    public static BrowserstackConfig config;
+
     public static URL getBrowserstackUrl() {
         try {
-            return new URL("http://hub.browserstack.com/wd/hub");
+            return new URL(config.getServerUrl());
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -33,4 +36,6 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
         mutableCapabilities.setCapability("name", "selenide android test");
         return new RemoteWebDriver(getBrowserstackUrl(), mutableCapabilities);
     }
+
+
 }

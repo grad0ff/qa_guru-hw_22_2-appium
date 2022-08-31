@@ -1,4 +1,4 @@
-package base;
+package managers;
 
 import com.codeborne.selenide.Configuration;
 import config.BrowserstackConfig;
@@ -7,29 +7,32 @@ import helpers.Attach;
 import org.aeonbits.owner.ConfigFactory;
 
 import static io.restassured.RestAssured.given;
-import static java.lang.String.format;
 
 public class BrowserstackMobileWDManager extends AbstractWDManager {
 
-    static BrowserstackConfig config = ConfigFactory.create(BrowserstackConfig.class);
+    private static final BrowserstackConfig config = ConfigFactory.create(BrowserstackConfig.class);
+
+    public static BrowserstackMobileWDManager create() {
+        BrowserstackMobileDriver.config = config;
+        return new BrowserstackMobileWDManager();
+    }
 
     @Override
-    void configureBeforeAll() {
+    public void configureBeforeAll() {
         Configuration.browser = BrowserstackMobileDriver.class.getName();
         Configuration.browserSize = null;
     }
 
     @Override
-    void configureAfterEach() {
+    public void configureAfterEach() {
         String sessionId = Attach.getSessionId();
         super.configureAfterEach();
         String videoUrl = getVideoUrl(sessionId);
         Attach.addVideo(videoUrl);
     }
 
-    @Override
-    String getVideoUrl(String sessionId) {
-        String url = format("https://api.browserstack.com/app-automate/sessions/%s.json", sessionId);
+    private String getVideoUrl(String sessionId) {
+        String url = config.getVideoPath() + sessionId + ".json";
         return given()
                 .auth().basic(config.getUser(), config.getKey())
                 .log().all()

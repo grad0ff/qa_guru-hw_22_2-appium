@@ -1,28 +1,31 @@
 package base;
 
+import managers.AbstractWDManager;
+import managers.BrowserstackMobileWDManager;
+import managers.LocalMobileWDManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
-public class MainTestBase {
+public class TestBase {
 
     private static AbstractWDManager manager;
 
     static {
-        String deviceHost = System.getProperty("-DdeviceHost", "emulator"); // TODO: 30.08.2022 undefined
+        String deviceHost = System.getProperty("-DdeviceHost", "browserstack"); // TODO: 30.08.2022 удалить default значение
         switch (deviceHost) {
             case "emulator":
-                manager = new LocalMobileWDManager(false);
+                manager = LocalMobileWDManager.create(false);
                 break;
-            case "device":
-                manager = new LocalMobileWDManager(true);
+            case "real":
+                manager = LocalMobileWDManager.create(true);
                 break;
             case "browserstack":
-                manager = new BrowserstackMobileWDManager(); // TODO: 29.08.2022
+                manager = BrowserstackMobileWDManager.create();
                 break;
             case "selenoid":
-//                manager = new SelenoidMobileWDManager(); // TODO: 29.08.2022
+                // TODO: manager = new SelenoidMobileWDManager();
                 break;
             default:
                 throw new RuntimeException();

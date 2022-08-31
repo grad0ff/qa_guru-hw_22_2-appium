@@ -10,4 +10,11 @@ public interface BrowserstackConfig extends Config {
 
     @Key("key")
     String getKey();
+
+    @Key("serverUrl")
+    String getServerUrl();
+
+    @Key("videoPath")
+    String getVideoPath();
+
 }

@@ -1,6 +1,6 @@
-package tests.local;
+package tests;
 
-import base.MainTestBase;
+import base.TestBase;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.SelenideElement;
 import io.appium.java_client.AppiumBy;
@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
 @Tag("android")
-public class SearchTests extends MainTestBase {
+public class AndroidWikipediaSearchTests extends TestBase {
 
     @Test
     void getStartedPageTest() {
