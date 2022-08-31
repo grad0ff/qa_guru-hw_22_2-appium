@@ -15,14 +15,14 @@ public class TestBase {
     static {
         String deviceHost = System.getProperty("-DdeviceHost");
         switch (deviceHost) {
+            case "browserstack":
+                manager = BrowserstackMobileWDManager.create();
+                break;
             case "emulator":
                 manager = LocalMobileWDManager.create(false);
                 break;
             case "real":
                 manager = LocalMobileWDManager.create(true);
-                break;
-            case "browserstack":
-                manager = BrowserstackMobileWDManager.create();
                 break;
             case "selenoid":
                 // TODO: manager = SelenoidMobileWDManager.create()();
