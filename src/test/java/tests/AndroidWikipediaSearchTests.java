@@ -10,7 +10,6 @@ import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
-@Tag("android")
 public class AndroidWikipediaSearchTests extends TestBase {
 
     GetStartedPage page = new GetStartedPage();
