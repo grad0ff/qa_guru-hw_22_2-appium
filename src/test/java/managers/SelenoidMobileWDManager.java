@@ -21,6 +21,7 @@ public class SelenoidMobileWDManager extends AbstractWDManager {
         Configuration.browser = SelenoidMobileDriver.class.getName();
     }
 
+    @Override
     public void configureAfterEach() {
         Selenide.clearBrowserLocalStorage();
         Selenide.clearBrowserCookies();
