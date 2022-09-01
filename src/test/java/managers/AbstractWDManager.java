@@ -14,14 +14,13 @@ public abstract class AbstractWDManager {
     public abstract void configureBeforeAll();
 
     public void configureBeforeEach() {
-        Selenide.closeWebDriver();
         addListener("AllureSelenide", new AllureSelenide());
     }
 
     public void configureAfterEach() {
         Attach.addScreenshotAs("Last screenshot");
         Attach.addPageSource();
-        step("Close driver", Selenide::closeWebDriver);
+        Selenide.closeWebDriver();
     }
 
     public void configureAfterAll() {
