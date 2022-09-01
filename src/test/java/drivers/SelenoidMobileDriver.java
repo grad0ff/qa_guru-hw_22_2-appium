@@ -35,7 +35,4 @@ public class SelenoidMobileDriver implements WebDriverProvider {
         ));
         return new RemoteWebDriver(getSelenoidServerUrl(), desiredCapabilities);
     }
-
-
-
 }

@@ -4,8 +4,8 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import config.SelenoidWebDriverConfig;
 import drivers.SelenoidMobileDriver;
+import helpers.Attach;
 import org.aeonbits.owner.ConfigFactory;
-import org.junit.jupiter.api.AfterEach;
 
 public class SelenoidMobileWDManager extends AbstractWDManager {
 
@@ -21,9 +21,15 @@ public class SelenoidMobileWDManager extends AbstractWDManager {
         Configuration.browser = SelenoidMobileDriver.class.getName();
     }
 
-    @AfterEach
-    void afterEach() {
+    public void configureAfterEach() {
         Selenide.clearBrowserLocalStorage();
         Selenide.clearBrowserCookies();
+        super.configureAfterEach();
+        String videoUrl = getVideoUrl();
+        Attach.addVideo(videoUrl);
+    }
+
+    private String getVideoUrl() {
+        return String.format("%s/%s.mp4", config.getVideoPath(), getSessionId());
     }
 }

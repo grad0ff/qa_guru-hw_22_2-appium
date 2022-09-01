@@ -3,7 +3,7 @@ package config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources("classpath:config/selenoid.properties")
-public interface SelenoidWebDriverConfig extends Config{
+public interface SelenoidWebDriverConfig extends Config {
 
     @Key("serverUrl")
     String getServerUrl();
@@ -20,4 +20,6 @@ public interface SelenoidWebDriverConfig extends Config{
     @Key("browserVersion")
     String getBrowserVersion();
 
+    @Key("videoPath")
+    String getVideoPath();
 }
