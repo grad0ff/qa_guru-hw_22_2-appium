@@ -25,7 +25,7 @@ public class BrowserstackMobileWDManager extends AbstractWDManager {
 
     @Override
     public void configureAfterEach() {
-        String sessionId = Attach.getSessionId();
+        String sessionId = getSessionId();
         super.configureAfterEach();
         String videoUrl = getVideoUrl(sessionId);
         Attach.addVideo(videoUrl);

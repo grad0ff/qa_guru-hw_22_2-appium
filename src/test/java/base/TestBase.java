@@ -3,6 +3,7 @@ package base;
 import managers.AbstractWDManager;
 import managers.BrowserstackMobileWDManager;
 import managers.LocalMobileWDManager;
+import managers.SelenoidMobileWDManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,7 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class TestBase {
 
-    private static AbstractWDManager manager;
+    private static final AbstractWDManager manager;
 
     static {
         String deviceHost = System.getProperty("deviceHost");
@@ -25,7 +26,7 @@ public class TestBase {
                 manager = LocalMobileWDManager.create(true);
                 break;
             case "selenoid":
-                // TODO: manager = SelenoidMobileWDManager.create()();
+                manager = SelenoidMobileWDManager.create();
                 break;
             default:
                 throw new RuntimeException();
